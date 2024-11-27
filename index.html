@@ -1,0 +1,2016 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница магазина</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .categories {
+            background-color: #4CAF50;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .categories a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        .search-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .search-container input[type="text"] {
+            padding: 10px;
+            width: 500px; /* Увеличена ширина поисковой строки */
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            padding: 20px;
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .product {
+            background-color: #f5f5f5;
+            width: 350px; /* Увеличиваем ширину карточек товаров */
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product img {
+            width: 100%;
+            height: 450px; /* Увеличиваем высоту изображения */
+            object-fit: cover;
+            border-radius: 5px;
+            background-color: #aaa;
+        }
+
+        .product h3 {
+            margin: 15px 0;
+            font-size: 20px;
+        }
+
+        .product .price {
+            margin: 10px 0;
+            color: #4CAF50;
+            font-size: 18px;
+        }
+
+        .product .price span {
+            font-size: 16px;
+            color: #888;
+            margin-left: 10px;
+        }
+
+        .product button {
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .product button.details {
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+        }
+
+        .product button.add-to-cart {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        /* Responsive design */
+        @media (max-width: 1200px) {
+            .product {
+                width: 300px; /* Для планшетов 3 товара в строке */
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .search-container input[type="text"] {
+                width: 400px; /* Уменьшаем ширину поисковой строки на планшетах */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product {
+                width: 220px; /* Для мобильных устройств 2 товара в строке */
+            }
+
+            .search-container input[type="text"] {
+                width: 90%; /* Увеличиваем ширину поисковой строки на мобильных */
+            }
+
+            .categories {
+                padding: 5px;
+            }
+
+            .categories a {
+                font-size: 14px; /* Уменьшаем размер текста для мобильных */
+                margin: 0 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product {
+                width: 100%; /* Для маленьких экранов 1 товар в строке */
+            }
+
+
+.search-container input[type="text"] {
+                width: 90%; /* Увеличиваем ширину поисковой строки на мобильных */
+            }
+
+            .categories {
+                display: none; /* Прячем категории на маленьких экранах */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Магазин Электроники</h1>
+    </div>
+
+    <div class="categories">
+        <a href="phones.html">Телефоны</a>
+        <a href="accessories.html">Аксессуары</a>
+        <a href="headphones.html">Наушники</a>
+        <a href="laptops.html">Ноутбуки</a>
+        <a href="other.html">Вещи</a>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Поиск по товарам...">
+        <button onclick="searchProducts()">Поиск</button>
+    </div>
+
+    <div class="product-container">
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/61O7S27O+jL._AC_UY327_FMwebp_QL65_.jpg" alt="Товар 1"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>sony</h3>
+            <p class="price">10000 тг <span>1500 CNY</span></p>
+            <button class="details" onclick="window.location.href='product1.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 1')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/51fYXSnSu9L.__AC_SX300_SY300_QL70_FMwebp_.jpg" alt="Товар 2"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>iphone 11</h3>
+            <p class="price">15000 тг <span>2200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product2.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 2')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="data:image/webp;base64,UklGRmINAABXRUJQVlA4IFYNAAAQTACdASqWANoAPkEai0OioaihMpZcmRAICWcAzqjkq+zc8fdku915t9kX1B4Tnp0k+qzTD1udv+2R/n8m5+wf7n0sZvqzjMn/xXrG/3n/t86/1P/5/cR/YDra+in+25iLDuJOyiGbTBEOPjc1BcfQREdo6wJd+o9CdjRulS5bzyOQpTUCQBR7ps73LoULrXDV14dEDFKBNiGMG+ncKP/VVNQH8CWep3xEQZqZ9E4dpL2bY5DdLA29XI9rtOTy8Q1ewdMqN8Tk5tVHqC056skhKVetjtBKD/OjDRKGLsd1JutIApi8NAUHFdl1EbB6yGHOkhxdoDleu7nhzjbC1WvY+vMWRlIBNU6IFOZClBrhe6k6Ye+SE3bsmW8EUSckcBm8pz74DUTXIlA+BIabk813JTwfYGZfFK75UqjpaIbfuWjOL7DZkPdNbm/o5yPPFN2AJBOZ4W++pGwSElEDOlBHmSyMGwXneIpbq4ydYb9OEjLpTaKwQV/x1BpEYfQHw5MwCVK/zTz6Mj2Gd594J0lzzUbcKqQLfGe404cZaQ9pa6vlto+Owg089BtWdyp4MsZ+DQr9QJkAt/fUvx84FAEsOwq9j8gm7pmiX4SVPxc2YJFSnF8hnLPVG/TgH2uuwAvgDT4bi5nSDLSM9mdk1fIHpKZtzuEieAmEGBXMzdPeCDAxhjNtkqqjXiadNRDDDe0Ox17D6jGy289JkqhC0H9nMGI6pr8ouft39b2yBUwmDA28M+yRS/P7XeH0qUbXGw0DoOziT1QauZIN7svk8fLddctaaLksAmPMa+9Lfn3CXf+9vJSQvUB0QAD+/BBNUvjZ2nP/DIecWr8d+Pm79vfB/1TebT5bNGCSGUa3h1/SclE+AT5RsVBOMAQtlj0I8z73QA8spQ5HWidYuJUTruVMgjKPNqQgn5e85hgWfFy0KfuV1e5co5b9/GkgWwxZ1rqXDiMhzNITRG58cAGh5CD5nMnimH73CLzOSvQJvyqdYyL/InlC4pqg/EEfyD5/b2/hqnNVsaRV786Bt79KSwI7ucQ5QbINYuYSQV/hDcafCeTssNGB89flbQPhM/8Phx7bgamnUglyYL83sKc5CiKGBr0+HLZBAuB9qZaTzFO/9hUvDHYJQz1qS1ssCYFklM4HYoTrOuQYam7GQDuJ93x0BtY9unPlX/P32Ty0NAVSf54gbVB+pfvX2fuOBTj8Nii/EljZ8jdfM6C07dJ6KNeTxLaHjopTqAt5J/0+XgihhRdS0Ofmx7BNq0RkgbaRbZVQgiM1j55xI9n9Amv0ejhcfz+LECYiXI/6hfbLw+hgEepu/z58xnqy4sN0Ux2j4iwd1FP0pTPnPrj4197IeI8RExKrZSY+kouisoHzpchrot2+scn3FduwDOxORYwgtcLJ5A9XvrA602UMhPk+qVcq3Pa8HDB/spBkbI89tNiJwWlGqSqwI8RiN7YOhPgb/0CLIR9bdNtubzcv3dadNu55hcv3m9SCzTzqeeowOdKIJyr4TEOuT19yjzLKrpejc6h3Tk8opg0oKipmBtPmv7NH7gbAo2K6gbc4scQxFRpnmmLcl93GZ+RKWIVQIpjE1Q5AYDbUGr7IaDFukFkDeT9YosPClHAkUeG1BAsFzEl/JyTWc1OVgOznfB3AsiFI9z4/qA76lt+uQ5avLBfpjGEYJij9Lep6vkWzf73diw30XOx+upHRUfUqZOdFZKrTMVS5wWNFRM+c1ABWV3OLTdiQHPCN4uyAsNt/POY/z9fO2lRLrOyCJ2rj0/zOokpTgsXR0PBOCFtI9w9fDsuG/qgmFd8q2gbwRFUITdowt2iwSozDqsnl6u4LNsv1vu8HLOyQO7QrdfLQdrYLWk3DerTD08bwDz3jqK/yEFPxvAR938e/JgwVDdUOj+5LWS9tSZiOJevUVd2NbxP2pM3vlsfLhYa2qxKDJqT5pxrh7/Ecwwjrrk4OUbiVHn/Cbs5//hgnCqP6zi48XCg47HV2J8O6r/QCbnC8njCmLpFkor59f2E60N9c/LA1qSZJs2iIfCMX6L7gfqDvAwjIbY7rMjbJ9ct127yMRtMULmz3TcQZpcYlJvk5HJ240uSF8ZUdXuf2YG/R8EtjVBTFLpj12Dq9el9IU+q+jprmyo/an1/NgXE1LPPOQHfukBwPCcP9RtVQrwsawQ3Yu9s2pmIxZ/0OJbce7XL2qMTbNA82bZpxM6o+JFvkzq4NkfTG8bYquEScYkr3yNcTNv+AdEI3PgylohcQEAjgy4+hxCAOwm9bAYCnDDhaD4kfZBxddTadGERxxeJnf6zCVmgRJ37Z7bhT7Uwx6AQQ+A49P9zDgOljt4Mo8RqGyExs6ji3AmKQUFZqYkPsoOkVZbIbB+Hqvi2WPSuig22RVmwJ4qUpYw/13FIOMoW0J1iecAUgKCcrY2nrG3aMU/1uy9/BhUjlk5LJSa6BGbDtnvWMR3/yK3cY+BNmtslBXE89o3/4bv4rXBX8CawsYCUg3UbwHZytBxsUdE/+GljxFDVXB2T8CjDHasUrcR0xan2+fvpr7+s3eL6MtuLDxV+6BPNLd1zhXhKr4YWJUvchw4g3j9ikT26p3EzHUABhWNQM+9+KPVEEg4RTPx3zrJ0mpnRzuJAYbWyWpckW4LS7XC1ikHf09tyfTfU0yWwrBM4mhJz2e9yTYjoBQ11mDiETmHgUdz5HUHwo46hH5eDiTUITMpAnefUbVRf3UzJRLC0wlfv63ixQ9n6ZVaDgBALYDtXhp3H0bSUBdF6depX/pWeZgdl2vTF/0GfqrNDjxW3JJ0zrmgGlYDFAwpmm+TaOvyxynKoRnA+f431p01GyfwVq4xEwpNZ+c611nOkQMo3Nv4b1zTBWQ1jlG/7AOs4bcoZlkxMqQu4KhuakvWXVd8GwahU5S/9/X/K3uQSCZbfgB1VVIdv+faKqu3u42f8yXXyVjUTM3WjQhdLweAT8qY+GGJkRnEQr5aIUp0EZVvTQ2ZBLp5zMgKOMirVFvmMVdRmBawWIljV4JozslsQWNXPoomOsoFoi/tiPz4gJ3MBfGFdGBy53UWQTGgQj+HHHMaHzDosdPc/MWbJb0GlmhkJWu4E+XcUvC1h35x8g8Jp8vmn/dXBVGdygM+O+r024QThXJqddyN1lvJW/7WoDhlKi/AM+uMUlcr9nQQC9a4N9csKnv4C6+nZTstJaKVph08/LXrctCcm5kG0mgvpkfLhF9o4SOw75/yY55q2hOUwJgVyRjqCeidXC4Z/gbugd2L7UeMtkgEkD2M7fPomIIwR98eI0gw/IucY/4R27m5UdBCl+zDvDgp3doEDgn6lqCGED0QSGBnixW6xKcWa3ya6GhD0RUpiU6KXPGlNORGAohN4ChzkKQfxlPciDu07HNWiuvCWeIrKyYaPJKZkR0wzEqstFuee1UHDf54si/dnfCZKnI5Yu37LzySPfq/kt54hZrsL89n2VktluqJ50TsbvTlmUFqrdG/iTM8Wub6ij9NINH/9OaKTYwP7NnRQuaknqeHlHqEGUAWrrMD9XnOjEdJKYsnSCPXA02IVwwPCX0yk0Kjapq/7t8Ah05dNzFymk3HWzG7j1x7kKhOn3aWD8n8LQ1V63GIZyWsZY085i12By0uOBH3+BLW6wtzwDIfWfHi2/B4iC5IAFJ2UvyiYggyMXfqSyHogt+kuaczVSxMAk6UV9M/RSxNmHAMBhN50fCuuM+09E5NMi3v1F9oJxfgKXeZ0vjIkXGue+I1zk0Q3hzlAlqYtHvPG9n59+9lZjVNtcaDQR/TqFG80pFRy6BsdQ79Gsm1S9f7Py/QRtzBciFF0tboI3hvI9g4E445BlOQXaUXOHAYMhcbLc2WI+RmAVNpCsjfmY14f0+gIHDNfuaP5tSxRWo4ePUrg49poKJzCeePqFkdzcGl2v9+NfwDYTFORkOwE74nlbfh77FG267e+SEk0hiogWic+um0LEdN7OA89+8rH5G3qQdIeJyGZ0/KLwPSTgdgsB9gHyKByU+K0sQyafRY69OAWsAOTxP1pohUhO0WSg2+jUANhAHx0lMR6ftHUDDuBQufEezEXthkcSlQUoqz1cj/kQgT5CdTmv9AJh5dFkRUsB1hPujcGbQflRsBM+o8pHNxLE57tcNMCLhGlYD7na7+KK5nRjuwMxN2EnxsnPJIGFsz0BsveZxci/LqSnndFV40PusrPUxY53MYl2LDDq1r2LsBtIGnGf0YD6SFKN/muKnIlJkeljol/aTGpdTUHuELJG3Dgdcu2374GVJ5QtCUjoSJUJSZy/R+GudF8jDb8MUj2lLPsAlKNaqOIFI8EuYl6D9Atk97slk1g/xHyk5PFhfq8PkXJEJWci+2jTjDuDbf9jyfE0/PRBI4cwoevqpjY/ukJ2mcDwjyDCSW/ZKWfF+W86TIoSSwzvKx3PSlClz71NjWzRxq3NyEm9B3RQRqON1KRrMTEHMFRWB44LnMpgocEFdqAQZvMywaXYS6bQzoTnoia5G1gBwvkE2uWkAWfq0fhV574IlC1C1PAAAAA=" alt="Товар 3"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>iphone 12</h3>
+            <p class="price">20000 тг <span>3000 CNY</span></p>
+            <button class="details" onclick="window.location.href='product3.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 3')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/51Af7V9jApL._AC_UY327_FMwebp_QL65_.jpg" alt="Товар 4"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Apple iPhone 15 Plus</h3>
+            <p class="price">25000 тг <span>3700 CNY</span></p>
+            <button class="details" onclick="window.location.href='product4.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 4')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/61rDLIISfiL._AC_UY327_FMwebp_QL65_.jpg" alt="Товар 5"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Apple iPhone 15 Pro Max</h3>
+            <p class="price">30000 тг <span>4500 CNY</span></p>
+            <button class="details" onclick="window.location.href='product5.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 5')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/61xJlx-3KDL._AC_UY327_FMwebp_QL65_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Apple iPhone 16 Pro </h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/81EVjYIOnQL._AC_UL480_FMwebp_QL65_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>женские кросовки</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div> 
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/51FfNT8FOAL._AC_SY695_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Skechers Respected-Boswell</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/81tc6arDvFL._AC_SX695_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>PUMA Axelion</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/61xpCBOfGRL._AC_SY695_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Greatonu Slingback Kitten Heel</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/616a2KxYALL._AC_SY741_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Dokotoo Женское платье </h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/51yCpdWRGzL._AC_SX679_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>hibshaby Женское</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/61YC42LACYL._AC_SY741_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Nmoder Повседневные платья </h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/716A1Qb6zXL._AC_SX569_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>5 шт. спортивных мужских шорт для спортзала</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/71oFBv1LbdL._AC_SX679_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Мужские спортивные шорты Hanes</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/71mvr8w552L._AC_SX569_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>NY Threads мужские спортивные шорты</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/91t73GnAomL._AC_SX679_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>W JIANWANG Спортивные костюмы для мужчин</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/51ZBNRvN5-L._AC_SX679_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Мужские спортивные костюмы</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/61v508oGLzL._AC_UY327_FMwebp_QL65_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Ручной 3-осевой стабилизатор для iPhone</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/619h-TALhKL._AC_UY327_FMwebp_QL65_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Усилитель для наушников M12i HiFi</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/61SXbNNe8DL.__AC_SX300_SY300_QL70_FMwebp_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Магнитный карманный штатив для телефона, складной, совместимый с Magsafe для iPhone 15/14/13/12 Plus Pro Max Series, обновленный мини-штатив для мобильного телефона, настольная подставка для смартфона, все в одном</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/71Dwu-ztgjL.__AC_SX300_SY300_QL70_FMwebp_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Портативный воздушный компрессор для накачивания шин, беспроводной воздушный насос 150 фунтов на кв. дюйм для автомобильных шин, аккумулятор и электрический насос для шин велосипеда с двумя источниками питания 12 В постоянного тока с манометром, светодиодный фонарь для автомобиля, мотоцикла, велосипеда, мяча</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/71aaOjmFYtL.__AC_SX300_SY300_QL70_FMwebp_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Drop Stop </h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/81UbT-qb1kL.__AC_SX300_SY300_QL70_FMwebp_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Органайзер для багажника автомобиля HOTOR - автомобильный органайзер</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/81oHvJt634L.__AC_SX300_SY300_QL70_FMwebp_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>OneOdio Проводные наушники-вкладыши Hi-Res Студийный монитор</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/81thV7SoLZL._AC_SX522_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Беспроводные полноразмерные наушники Apple AirPods Max, активное шумоподавление, режим прозрачности, персонализированный пространственный звук, Dolby Atmos, Bluetooth-наушники для iPhone — серебристые</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/61iBtxCUabL.__AC_SY445_SX342_QL70_FMwebp_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Беспроводные наушники Apple AirPods 4, Bluetooth-</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/81eH0lMrkRL.__AC_SX300_SY300_QL70_FMwebp_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Ноутбук Jumper</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/71mk562ndFL.__AC_SX300_SY300_QL70_FMwebp_.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>15,6-дюймовый ноутбук для студентов с IPS FHD-дисплеем, 16 ГБ ОЗУ, 1 ТБ SSD, четырехъядерный процессор Intel Pentium N100 (Beat to i3-1115G4, до 3,4 ГГц), клавиатура с подсветкой, сканер отпечатков пальцев, 65 Вт Type C, WiFi 6, BT5.2, USB3.0, Win 11</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div><div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div><div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div><div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div><div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="path_to_image6.jpg" alt="Товар 6"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 6</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 6')">Добавить в корзину</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/61O7S27O+jL._AC_UY327_FMwebp_QL65_.jpg" alt="Товар 100"> <!-- Здесь добавьте путь к изображению товара -->
+            <h3>Товар 100</h3>
+            <p class="price">35000 тг <span>5200 CNY</span></p>
+            <button class="details" onclick="window.location.href='product6.html'">Подробнее</button>
+            <button class="add-to-cart" onclick="addToCart('Товар 100')">Добавить в корзину</button>
+        </div>
+    </div>
+<script>
+        // Функция поиска товаров
+        function searchProducts() {
+            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+            const products = document.querySelectorAll('.product');
+
+            products.forEach(product => {
+                const productName = product.querySelector('h3').textContent.toLowerCase();
+                if (productName.includes(searchQuery)) {
+                    product.style.display = 'block'; // Показываем товар, если он соответствует поисковому запросу
+                } else {
+                    product.style.display = 'none'; // Скрываем товар, если он не соответствует запросу
+                }
+            });
+        }
+
+        // Функция добавления товара в корзину
+        function addToCart(productName) {
+           " alert(${productName} добавлен в корзину!);"
+        }
+    </script>
+
+</body>
+</html>
